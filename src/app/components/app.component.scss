@@ -1,0 +1,17 @@
+@import "src/app/styles/main";
+
+app-nav-menu {
+  width: 100%;
+  position: fixed;
+  z-index: 900;
+  top: 0;
+}
+
+.nav-menu-spacer {
+  height: $nav-menu-height;
+}
+
+.body-content {
+  margin-top: 40px;
+  font-family: $text-fonts;
+}

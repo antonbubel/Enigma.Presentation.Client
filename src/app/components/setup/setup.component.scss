@@ -1,0 +1,30 @@
+@import "src/app/styles/main";
+
+mat-form-field {
+  display: block;
+  margin: 16px 0;
+}
+
+.navigation-block {
+  text-align: center;
+
+  button: {
+    margin: 0 8px;
+  }
+}
+
+.done-header {
+  font-family: $header-fonts;
+  text-align: center;
+  font-size: 1.3em;
+  font-weight: 100;
+}
+
+.done-text {
+  text-align: left;
+  width: 400px;
+  margin: auto;
+  margin-top: 16px;
+  margin-bottom: 32px;
+}
+

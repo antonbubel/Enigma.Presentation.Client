@@ -1,0 +1,72 @@
+<mat-horizontal-stepper [linear]="true" #stepper>
+  <mat-step [stepControl]="rotorsSetupFormGroup">
+    <form [formGroup]="rotorsSetupFormGroup">
+      <ng-template matStepLabel>Setup Rotors</ng-template>
+      <mat-form-field>
+        <mat-select placeholder="First Rotor" formControlName="firstRotor">
+          <mat-option *ngFor="let rotor of rotors" [value]="rotor.value">{{ rotor.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Second Rotor" formControlName="secondRotor">
+          <mat-option *ngFor="let rotor of rotors" [value]="rotor.value">{{ rotor.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Third Rotor" formControlName="thirdRotor">
+          <mat-option *ngFor="let rotor of rotors" [value]="rotor.value">{{ rotor.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="navigation-block">
+        <button mat-raised-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="reflectorSetupFormGroup">
+    <form [formGroup]="reflectorSetupFormGroup">
+      <ng-template matStepLabel>Setup Reflector</ng-template>
+      <mat-form-field>
+        <mat-select placeholder="Reflector" formControlName="reflector">
+          <mat-option *ngFor="let reflector of reflectors" [value]="reflector.value">{{ reflector.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="navigation-block">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-raised-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="plugboardSetupFormGroup">
+    <form [formGroup]="plugboardSetupFormGroup">
+      <ng-template matStepLabel>Setup Plugboard</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Plugboard Map" formControlName="plugboard" required>
+      </mat-form-field>
+      <div class="navigation-block">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-raised-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <h4 class="done-header">You are now done!</h4>
+    <p class="done-text">
+      First Rotor: <i>{{ getRotorName(rotorsSetupFormGroup.value.firstRotor) }}</i>
+      <br>
+      Second Rotor: <i>{{ getRotorName(rotorsSetupFormGroup.value.secondRotor) }}</i>
+      <br>
+      Third Rotor: <i>{{ getRotorName(rotorsSetupFormGroup.value.thirdRotor) }}</i>
+      <br>
+      <br>
+      Reflector: <i>{{ getReflectorName(reflectorSetupFormGroup.value.reflector) }}</i>
+      <br>
+      <br>
+      Plugboard Map: <i>{{ plugboardSetupFormGroup.value.plugboard }}</i>
+    </p>
+    <div class="navigation-block">
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-raised-button (click)="submit()">Submit</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

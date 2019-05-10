@@ -1,0 +1,13 @@
+<mat-toolbar class="toolbar" color="primary">
+  <div>
+    <button mat-button [matMenuTriggerFor]="menu" class="nav-menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/home">Home</button>
+      <button mat-menu-item routerLink="/how-it-works">How it works?</button>
+    </mat-menu>
+  </div>
+
+  <h4 class="nav-title" routerLink="/home">Enigma</h4>
+</mat-toolbar>

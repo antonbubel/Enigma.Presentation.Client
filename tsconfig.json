@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@constants/*": ["src/app/constants/*"],
+      "@components/*": ["src/app/components/*"],
+      "@services/*": ["src/app/services/*"],
+      "@models/*": ["src/app/models/*"],
+      "@state/*": ["src/app/state/*"],
+      "@tools/*": ["src/app/tools/*"] 
+    }
   }
 }
