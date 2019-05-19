@@ -1,17 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 import { BaseApiService } from './base/base.api.service';
 import { CookieService } from 'ngx-cookie-service';
+import { Store } from '@ngrx/store';
+import { AppState } from '@state/app.state';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService extends BaseApiService {
+
+  private token: string;
+  private authTokenSubscription: Subscription;
+
   private get headers(): HttpHeaders {
-    const authToken = this.cookieService.get('auth-token');
+    const authToken = this.cookieService.get('auth-token') || this.token;
 
     if (authToken) {
       return new HttpHeaders({
@@ -25,8 +32,10 @@ export class ApiService extends BaseApiService {
     });
   } 
 
-  public constructor(private readonly http: HttpClient, private readonly cookieService: CookieService) {
+  public constructor(private readonly http: HttpClient, private readonly cookieService: CookieService,
+    private readonly store: Store<AppState>) {
     super();
+    this.createAuthTokenSubscription();
   }
 
   public get(url: string): Observable<any> {
@@ -51,5 +60,12 @@ export class ApiService extends BaseApiService {
       .toPromise();
 
     return this.handlePromise(promise);
+  }
+
+  private createAuthTokenSubscription() {
+    this.authTokenSubscription = this.store
+      .select(state => state.authState)
+      .pipe(filter(authState => <any>authState))
+      .subscribe(authState => this.token = authState.token);
   }
 }
