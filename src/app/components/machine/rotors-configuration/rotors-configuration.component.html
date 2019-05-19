@@ -1,0 +1,25 @@
+<form class="rotors-configuration-form" *ngIf="rotorsConfigurationForm" [formGroup]="rotorsConfigurationForm">
+  <mat-form-field appearance="outline">
+    <mat-select formControlName="firstLetter">
+      <mat-option *ngFor="let letter of letters" [value]="letter">
+        {{ letter }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-select formControlName="secondLetter">
+      <mat-option *ngFor="let letter of letters" [value]="letter">
+        {{ letter }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-select formControlName="thirdLetter">
+      <mat-option *ngFor="let letter of letters" [value]="letter">
+        {{ letter }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>

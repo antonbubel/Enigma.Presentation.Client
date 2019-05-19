@@ -1,23 +1,37 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
 import { BaseApiService } from './base/base.api.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService extends BaseApiService {
-  private headers: any = { withCredentials: false };
+  private get headers(): HttpHeaders {
+    const authToken = this.cookieService.get('auth-token');
 
-  public constructor(private readonly http: HttpClient) {
+    if (authToken) {
+      return new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`
+      });
+    }
+
+    return new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+  } 
+
+  public constructor(private readonly http: HttpClient, private readonly cookieService: CookieService) {
     super();
   }
 
   public get(url: string): Observable<any> {
     const promise = this.http
-      .get(url, this.headers)
+      .get(url, { headers: this.headers })
       .toPromise();
 
     return this.handlePromise(promise);
@@ -25,7 +39,7 @@ export class ApiService extends BaseApiService {
 
   public post(url: string, content: any): Observable<any> {
     const promise = this.http
-      .post(url, content, this.headers)
+      .post(url, content, { headers: this.headers })
       .toPromise();
 
     return this.handlePromise(promise);
@@ -33,7 +47,7 @@ export class ApiService extends BaseApiService {
 
   public put(url: string, content: any): Observable<any> {
     const promise = this.http
-      .put(url, content, this.headers)
+      .put(url, content, { headers: this.headers })
       .toPromise();
 
     return this.handlePromise(promise);

@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import { CookieService } from 'ngx-cookie-service';
 import { reducers } from '@state/reducers';
 import { effects } from '@state/effects';
 
@@ -21,6 +22,7 @@ import { AppComponent } from './components/app.component';
     StoreDevtoolsModule.instrument({ maxAge: 10 }),
     ComponentsModule
   ],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

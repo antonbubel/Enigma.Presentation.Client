@@ -1,0 +1,16 @@
+<div>
+  <rotors-configuration></rotors-configuration>
+
+  <div class="encrypted-text-wrap">
+    <h4>Encrypted Text:</h4>
+    <p>{{ encryptedText }}</p>
+  </div>
+
+  <form class="encryption-form" [formGroup]="encryptionForm">
+    <mat-form-field appearance="outline" class="message-input">
+      <textarea matInput placeholder="Enter a message" formControlName="message"></textarea>
+    </mat-form-field>
+  </form>
+
+  <button mat-raised-button class="reset-button" (click)="reset()">Reset Configuration</button>
+</div>

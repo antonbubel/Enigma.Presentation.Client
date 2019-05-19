@@ -1,3 +1,4 @@
+const os = require('os');
 const { app, BrowserWindow } = require('electron');
 
 let window;
@@ -14,7 +15,3 @@ function createWindow() {
 }
 
 app.on('ready', createWindow);
-
-app.on('window-all-closed', function () {
-
-});

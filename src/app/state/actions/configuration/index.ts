@@ -43,3 +43,22 @@ export const setConfiguration = (
 export const resetConfiguration = () => ({
   type: types.CONFIGURATION_RESET
 });
+
+export const loadConfiguration = () => ({
+  type: types.CONFIGURATION_LOAD
+})
+
+export const saveConfiguration = (
+  firstRotor: number,
+  secondRotor: number,
+  thirdRotor: number,
+  reflector: number,
+  plugboardMap: string
+) => ({
+  type: types.CONFIGURATION_SAVE,
+  firstRotor,
+  secondRotor,
+  thirdRotor,
+  reflector,
+  plugboardMap
+});

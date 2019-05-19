@@ -1,5 +1,5 @@
 import reducerCreator from '@tools/reducer-creator';
-import * as types from '@state/actions/types';
+import * as types from '@state/actions/configuration/types';
 
 export default reducerCreator({ }, {
   [types.CONFIGURATION_SET_FIRST_ROTOR]: (state, { firstRotor }) =>
@@ -20,5 +20,6 @@ export default reducerCreator({ }, {
   [types.CONFIGURATION_SET]: (state, { firstRotor, secondRotor, thirdRotor, reflector, plugboardMap }) =>
     Object.assign({ ...state, firstRotor, secondRotor, thirdRotor, reflector, plugboardMap }),
 
-  [types.CONFIGURATION_RESET]: () => { }
+  [types.CONFIGURATION_RESET]: (state) =>
+    Object.assign({ ...state, firstRotor: null, secondRotor: null, thirdRotor: null, reflector: null, plugboardMap: null })
 });

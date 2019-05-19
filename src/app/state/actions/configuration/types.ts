@@ -7,3 +7,6 @@ export const CONFIGURATION_SET_REFLECTOR = `${configurationActionPrefix} - Set R
 export const CONFIGURATION_SET_PLUGBOARD_MAP = `${configurationActionPrefix} - Set Plugboard Map`;
 export const CONFIGURATION_SET = `${configurationActionPrefix} - Set`;
 export const CONFIGURATION_RESET = `${configurationActionPrefix} - Reset`;
+
+export const CONFIGURATION_LOAD = `${configurationActionPrefix} - Load`;
+export const CONFIGURATION_SAVE = `${configurationActionPrefix} - Save`;

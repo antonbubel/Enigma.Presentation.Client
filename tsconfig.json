@@ -24,7 +24,8 @@
       "@services/*": ["src/app/services/*"],
       "@models/*": ["src/app/models/*"],
       "@state/*": ["src/app/state/*"],
-      "@tools/*": ["src/app/tools/*"] 
+      "@tools/*": ["src/app/tools/*"],
+      "@providers/*": ["src/app/providers/*"]
     }
   }
 }

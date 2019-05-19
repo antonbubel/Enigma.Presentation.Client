@@ -16,6 +16,7 @@ export abstract class BaseApiService {
   }
 
   protected handleError(error: any) {
+    console.log(error);
     const applicationError = error.headers.get('Application-Error');
 
     if (applicationError) {

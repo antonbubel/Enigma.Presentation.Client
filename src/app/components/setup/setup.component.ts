@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from '@state/app.state';
 
-import { setConfiguration } from '@state/actions';
+import { saveConfiguration } from '@state/actions/configuration';
 
 import { SelectOptionModel } from '@models/select-option.model';
 
@@ -61,7 +61,7 @@ export class SetupComponent implements OnInit {
     const { reflector } = this.reflectorSetupFormGroup.value;
     const { plugboard } = this.plugboardSetupFormGroup.value;
 
-    this.store.dispatch(setConfiguration(
+    this.store.dispatch(saveConfiguration(
       firstRotor,
       secondRotor,
       thirdRotor,

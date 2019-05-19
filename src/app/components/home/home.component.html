@@ -1,3 +1,4 @@
-<div class="content home-wrap">
-  <app-setup></app-setup>
+<div *ngIf="userAuthenticated" class="content home-wrap">
+  <app-setup *ngIf="!machineConfigured"></app-setup>
+  <enigma-machine *ngIf="machineConfigured"></enigma-machine>
 </div>

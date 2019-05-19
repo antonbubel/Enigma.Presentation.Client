@@ -1,5 +1,9 @@
+import authReducer from './auth.reducer';
 import configurationReducer from './configuration.reducer';
+import rotorsConfigurationReducer from './rotors-configuration.reducer';
 
 export const reducers = {
-  configurationState: configurationReducer
+  authState: authReducer,
+  configurationState: configurationReducer,
+  rotorsConfigurationState: rotorsConfigurationReducer
 };
